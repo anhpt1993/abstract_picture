@@ -100,44 +100,53 @@ def loop_other(func, number):
         func(distance, get_color())
         t.right(360/number)
 
+def try_again():
+    choice = input("Do you want to try again? (Y/N): ").upper().strip()
+    if choice == "Y" or choice == "YES":
+        return True
+    else:
+        print("Bye! See you next time!!!")
+        exit()
+
 if __name__ == '__main__':
 
-    option = choose_option()
-    number = input_picture()
+    while True:
+        option = choose_option()
+        number = input_picture()
 
-    t.pensize(3)
-    t.pendown()
-    t.speed(100)
-    t.colormode(255)
+        t.pensize(3)
+        t.pendown()
+        t.speed(1000)
+        t.colormode(255)
 
-    if option == 1:
-        print("Width: ", end = "\t")
-        width = input_data()
-        print("Height: ", end = "\t")
-        height = input_data()
-        loop_rectangle(draw_rectangle, number)
-    elif option == 2:
-        print("Side: ", end = "\t")
-        distance = input_data()
-        loop_other(draw_square, number)
-    elif option == 3:
-        print("Radius: ", end="\t")
-        distance = input_data()
-        loop_other(draw_circle, number)
-    elif option == 4:
-        print("Side: ", end="\t")
-        distance = input_data()
-        loop_other(draw_equilateral_triangle, number)
-    elif option == 5:
-        print("Radius: ", end="\t")
-        distance = input_data()
-        loop_other(draw_ellipse, number)
-    else:
-        print("Side: ", end="\t")
-        distance = input_data()
-        loop_other(draw_pentagon, number)
+        if option == 1:
+            print("Width: ", end = "\t")
+            width = input_data()
+            print("Height: ", end = "\t")
+            height = input_data()
+            loop_rectangle(draw_rectangle, number)
+        elif option == 2:
+            print("Side: ", end = "\t")
+            distance = input_data()
+            loop_other(draw_square, number)
+        elif option == 3:
+            print("Radius: ", end="\t")
+            distance = input_data()
+            loop_other(draw_circle, number)
+        elif option == 4:
+            print("Side: ", end="\t")
+            distance = input_data()
+            loop_other(draw_equilateral_triangle, number)
+        elif option == 5:
+            print("Radius: ", end="\t")
+            distance = input_data()
+            loop_other(draw_ellipse, number)
+        else:
+            print("Side: ", end="\t")
+            distance = input_data()
+            loop_other(draw_pentagon, number)
 
-        t.right(360/number)
+            t.right(360/number)
 
-    t.hideturtle()
-    t.mainloop()
+        t.resetscreen()
+        try_again()
